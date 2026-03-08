@@ -1,0 +1,37 @@
+Router>enable
+Router#configure terminal
+Router(config)#hostname R5
+R5(config)#interface GigabitEthernet0/0/0
+R5(config-if)#description SW8 Link
+R5(config-if)#ip helper-address 172.16.0.3
+R5(config-if)#ip address 172.16.1.254 255.255.255.0
+R5(config-if)#no shut
+R5(config-if)#exit
+
+R5(config)#interface GigabitEthernet0/0/1
+R5(config-if)#description SW9 Link
+R5(config-if)#ip helper-address 172.16.0.3
+R5(config-if)#ip address 172.16.0.254 255.255.255.0
+R5(config-if)#no shut
+R5(config-if)#exit
+
+R5(config)#interface serial0/2/1
+R5(config-if)#description R2 Link
+R5(config-if)#ip address 172.16.4.93 255.255.255.252
+R5(config-if)#no shut
+R5(config-if)#exit
+
+R5(config)#ipv6 route 2001:CAD:ABCD::/64  2001:CAD:ABCD:D::1
+R5(config)#ipv6 route 2001:CAD:ABCD:1::/64  2001:CAD:ABCD:D::1
+R5(config)#
+R5(config)#ipv6 route 2001:CAD:ABCD:A::/64  2001:CAD:ABCD:D::1
+R5(config)#ipv6 route 2001:CAD:ABCD:B::/64  2001:CAD:ABCD:D::1
+R5(config)#ipv6 route 2001:CAD:ABCD:C::/64  2001:CAD:ABCD:D::1
+R5(config)#ipv6 route 2001:CAD:ABCD:2::/64  2001:CAD:ABCD:D::1
+R5(config)#
+R5(config)#ipv6 route 2001:CAD:ABCD:3::/64  2001:CAD:ABCD:D::1
+R5(config)#ipv6 route 2001:CAD:ABCD:4::/64  2001:CAD:ABCD:D::1
+R5(config)#
+R5(config)#ipv6 route 2001:CAD:ABCD:5::/64  2001:CAD:ABCD:D::1
+R5(config)#ipv6 unicast-routing
+R5(config)#exit

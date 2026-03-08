@@ -1,0 +1,54 @@
+Router>enable
+Router#conf ter
+Router(config)#hostname R3
+R3(config)#interface GigabitEthernet0/0/0.2
+R3(config-subif)#description SW4-vlan2 Link
+R3(config-subif)#encapsulation dot1q 2
+R3(config-subif)#ip address 172.16.4.30 255.255.255.224
+R3(config-subif)#no shut
+R3(config-subif)#exit
+
+R3(config)#interface GigabitEthernet0/0/0.3
+R3(config-subif)#description SW4-vlan3 Link
+R3(config-subif)#encapsulation dot1q 3
+R3(config-subif)#ip address 172.16.3.126 255.255.255.192
+R3(config-subif)#no shut
+R3(config-subif)#exit
+
+R3(config)#interface GigabitEthernet0/0/0.4
+R3(config-subif)#description SW4-vlan4 Link
+R3(config-subif)#encapsulation dot1q 4
+R3(config-subif)#ip address 172.16.3.222 255.255.255.224
+R3(config-subif)#no shut
+R3(config-subif)#exit
+
+R3(config)#interface GigabitEthernet0/0/0
+R3(config-if)#description SW4-Link
+R3(config-if)#no ip address
+R3(config-if)#no shut
+R3(config-if)#exit
+
+R3(config)#interface serial0/1/1
+R3(config-if)#description R2 Link
+R3(config-if)#ip address 172.16.4.85 255.255.255.252
+R3(config-if)#exit
+
+
+
+R3(config)#ipv6 route 2001:CAD:ABCD::/64  2001:CAD:ABCD:B::1
+R3(config)#ipv6 route 2001:CAD:ABCD:D::/64  2001:CAD:ABCD:B::1
+R3(config)#
+R3(config)#ipv6 route 2001:CAD:ABCD:A::/64  2001:CAD:ABCD:B::1
+R3(config)#ipv6 route 2001:CAD:ABCD:C::/64  2001:CAD:ABCD:B::1
+R3(config)#ipv6 route 2001:CAD:ABCD:D::/64  2001:CAD:ABCD:B::1
+R3(config)#ipv6 route 2001:CAD:ABCD:2::/64  2001:CAD:ABCD:B::1
+R3(config)#
+R3(config)#ipv6 route 2001:CAD:ABCD:3::/64  2001:CAD:ABCD:B::1
+R3(config)#ipv6 route 2001:CAD:ABCD:4::/64  2001:CAD:ABCD:B::1
+R3(config)#
+R3(config)#ipv6 route 2001:CAD:ABCD:5::/64  2001:CAD:ABCD:B::1
+R3(config)#ipv6 route 2001:CAD:ABCD:6::/64  2001:CAD:ABCD:B::1
+R3(config)#
+R3(config)#ipv6 route 2001:CAD:ABCD:7::/64  2001:CAD:ABCD:B::1
+R3(config)#ipv6 unicast-routing
+R3(config)#exit
